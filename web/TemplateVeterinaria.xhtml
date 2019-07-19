@@ -17,6 +17,9 @@
             <div id="top" class="top">
                 <ui:insert name="top">
                     <p:megaMenu>
+                        <p:submenu label="Inicio">
+
+                        </p:submenu>
                         <p:submenu label="Mantenimientos">
                             <p:column>
                                 <p:submenu label="A">
@@ -26,8 +29,23 @@
                                 </p:submenu>
                             </p:column>
                         </p:submenu>
-                        <p:submenu label="Inicio">
+                        <p:submenu label="Atencion Al Cliente--">
+                            <p:column>
+                                <p:submenu label="Tipo">
+                                    <p:menuitem value="Atencion" action="/RegistroAtencion"/>
+                                    <p:menuitem value="TipoReserva" action="/RegistroTipoReserva"/>
+                                    <p:menuitem value="TipoAtencion" action="/RegistroTipoAtencion"/>
+                                </p:submenu>
+                            </p:column>
+                        </p:submenu>
 
+                        <p:submenu label="Reservar Cita">
+                            <p:column>
+                                <p:submenu label="---">
+                                    <p:menuitem value="Usuario" action="/RegistroUsuario"/>
+                                    <p:menuitem value="Reserva Cita" action="/RegistroReservaCita"/>
+                                </p:submenu>
+                            </p:column>
                         </p:submenu>
 
                     </p:megaMenu>

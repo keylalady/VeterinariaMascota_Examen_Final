@@ -5,8 +5,9 @@
  */
 package managedBean;
 
-import Dao.ClienteDao;
+import Dao.TipoReservaDao;
 import entidades.Cliente;
+import entidades.Tiporeserva;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
@@ -20,77 +21,71 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class ClienteBeans {
+public class TipoReservaBeans {
 
     //private Date date9;
-    private Cliente cliente;
+    private Tiporeserva tiporeserva;
      private boolean banderaSelect = false;
 
     //constructor
-    public ClienteBeans() {
-        this.cliente = new Cliente();
+    public TipoReservaBeans() {
+        this.tiporeserva = new Tiporeserva();
     }
-   
-    public String guardarCliente() {
-        ClienteDao clientedao = new ClienteDao();
-        boolean respuesta = clientedao.guardarCliente(cliente);
+ 
+
+    public String guardarTipoReserva() {
+        TipoReservaDao dao = new TipoReservaDao();
+        boolean respuesta = dao.guardarTiporeserva(tiporeserva);
         if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se guardo correctamente"));
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo registrar"));
         }
-        return "/RegistroCliente";
+        return "/RegistroTipoReserva";
 
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public String actualizarCliente() {
+ 
+    public String actualizarTipoReserva() {
         try {
-            ClienteDao mascotadao = new ClienteDao();
-            boolean resp = mascotadao.ActualizarMascota(cliente);
+            TipoReservaDao dao = new TipoReservaDao();
+            boolean resp = dao.ActualizarTiporeserva(tiporeserva);
             if (resp) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se actualizo correctamente"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se Pudo Actualizar"));
 
             }
-            mascotadao.ActualizarMascota(cliente);
+            dao.ActualizarTiporeserva(tiporeserva);
         } catch (Exception e) {
             System.out.println("Error::" + e);
         }
-        return "/RegistroCliente";
+        return "/RegistroTipoReserva";
     }
 
-    public ArrayList<Cliente> listarCliente() {
-        ArrayList<Cliente> milista = new ArrayList<>();
-        ClienteDao dao = new ClienteDao();
-        milista = dao.listarCliente();
+    public ArrayList<Tiporeserva> listarTipoReserva() {
+        ArrayList<Tiporeserva> milista = new ArrayList<>();
+        TipoReservaDao dao = new TipoReservaDao();
+        milista = dao.listarTiporeserva();
         return milista;
 
     }
 
     public String limpiar() {
         banderaSelect=false;
-        return "/RegistroCliente.xhtml";
+        return "/RegistroTipoReserva.xhtml";
     }
 
-    public String eliminar(Cliente data) {
-        ClienteDao madao = new ClienteDao();
-        boolean respuesta = madao.eliminarMascota(data);
+    public String eliminar(Tiporeserva data) {
+        TipoReservaDao madao = new TipoReservaDao();
+        boolean respuesta = madao.eliminarTiporeserva(data);
         if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se elimino correctamente"));
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo eliminar"));
         }
 
-        return "/RegistroCliente.xhtml";
+        return "/RegistroTipoReserva.xhtml";
     }
     public void selectBandera() {
         banderaSelect = true;
@@ -102,6 +97,14 @@ public class ClienteBeans {
 
     public void setBanderaSelect(boolean banderaSelect) {
         this.banderaSelect = banderaSelect;
+    }
+
+    public Tiporeserva getTiporeserva() {
+        return tiporeserva;
+    }
+
+    public void setTiporeserva(Tiporeserva tiporeserva) {
+        this.tiporeserva = tiporeserva;
     }
     
 }

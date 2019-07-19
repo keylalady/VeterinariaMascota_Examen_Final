@@ -114,6 +114,7 @@ public class MascotaPorClienteBeans {
     }
 
     public void setBanderaSelect(boolean banderaSelect) {
+        
         this.banderaSelect = banderaSelect;
     }
 
